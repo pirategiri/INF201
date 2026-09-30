@@ -4,7 +4,7 @@ import pandas as pd
 
 #reading config data
 def config_data(filename: str):
-    """Function to read the orgininal config file"""
+    """Function to read the orgininal config file and saving into standard python dictionary"""
 
     #opening file
     with open(filename, "r") as file:
@@ -38,7 +38,7 @@ def read_sensors():
     merged_data=pd.merge(
         sensor_data, calibration_data ,on="sensor_id")
 
-    #Getting the number of overdue sensors
+    #Filtering  overdue sensors,
 
     overdue_sensors= merged_data[merged_data["days_since_calibration"]>max_days_since_calibration]
     print(overdue_sensors)
